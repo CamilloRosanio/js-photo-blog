@@ -6,6 +6,15 @@
 
 
 /**********************************************************
+| # CUSTOM PARAMETERS
+**********************************************************/
+
+:root {
+    --pinpoint_width: 15px;
+}
+
+
+/**********************************************************
 | # BODY
 **********************************************************/
 
@@ -22,8 +31,8 @@ body {
 
 header {
     background-image: url(../img/wall.png);
-        background-repeat: no-repeat;
-        background-size: cover;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 
@@ -31,8 +40,43 @@ header {
 | # MAIN
 **********************************************************/
 
+#container-relative {
+    position: relative;
+}
+
+#postit-zoom {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 1;
+
+    background-color: rgba(0, 0, 0, 0.781);
+}
+
+main {
+    position: absolute;
+}
+
 .wrapper {
     width: 70%;
+}
+
+#card-box {
+    position: relative;
+}
+
+
+/* PUNTINA POSTIT */
+.pinpoint {
+    width: var(--pinpoint_width);
+    height: var(--pinpoint_width);
+    position: absolute;
+    left: 48%;
+    top: -2%;
+}
+
+.pinpoint img {
+    position: absolute;
 }
 
 
@@ -46,5 +90,12 @@ header {
     border: 1px dashed black;
 }
 
+
+
+
+
+/**********************************************************
+| # TEST
+**********************************************************/
 
 
