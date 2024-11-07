@@ -41,6 +41,52 @@
 
 
 
+
+
+<!--**********************************************************
+| # VARIAZIONI CLICK
+**********************************************************-->
+
+<!-- ********** CLICK SU POSTIT ********** -->
+
+    <!-- 
+    #container-relative
+        set attribute // position:relative
+
+    #postit-zoom
+        set attribute // position:absolute
+        remove // class="d-none"
+        add // class="d-flex flex-column"
+
+    main
+        set attribute // position:absolute
+    -->
+
+<!-- ********** CLICK SU CHIUDI GREYOUT ********** -->
+
+    <!-- 
+    #container-relative
+        remove attribute // position:relative
+
+    #postit-zoom
+        remove attribute // position:absolute
+        remove // class="d-flex"
+        add // class="d-none"
+
+    main
+        remove attribute // position:absolute
+    -->
+
+
+
+
+
+
+
+
+
+
+
 <!--**********************************************************
 | # BODY
 **********************************************************-->
@@ -52,12 +98,34 @@
         <h1 class="h1">ESTATE '24</h1>
     </header> 
 
-
+    
     <div id="container-relative">
-        
+
         <!-- POSTIT ZOOM -->
-        <div class="d-flex justify-content-center align-items-center" id="postit-zoom">
-            <h1>ciao</h1>
+        <div class="d-none justify-content-center align-items-center py-5" id="postit-zoom">
+
+            <!-- CLOSE BUTTON -->
+            <button class="d-block btn btn-danger mb-4" id="closeZoomButton">
+                Chiudi
+            </button>
+
+            <!-- POSTIT CARD -->
+            <div class="col-12 col-md-6 col-lg-4" id="card-box">
+                <!-- POSTIT WHITE BOX -->
+                <div class="bg-white p-4 h-100" >
+                    <!-- POSTIT IMG -->
+                    <div class="mb-2">
+                        <img src="./img/placeholder-square.png" alt="" class="img-fluid">
+                    </div>
+
+                    <!-- POSTIT TEXT -->
+                    <div>
+                        <p class="h6 mb-0">
+                            Testo del mio bellissimo Postit
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
         
         
@@ -79,7 +147,7 @@
                         </div>
 
                         <!-- POSTIT WHITE BOX -->
-                        <div class="bg-white p-3 h-100" >
+                        <div class="bg-white p-3 h-100" id="cardClick">
                             <!-- POSTIT IMG -->
                             <div class="mb-2">
                                 <img src="./img/placeholder-square.png" alt="" class="img-fluid">

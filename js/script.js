@@ -19,3 +19,23 @@ rendi la pagina responsive, in modo che su mobile e tablet le foto si dispongano
 /**********************************************************
 | # SVOLGIMENTO
 **********************************************************/
+
+
+const cardClick = document.getElementById('cardClick');
+
+const postitZoom = document.getElementById('postit-zoom');
+const closeZoomButton = document.getElementById('closeZoomButton');
+
+cardClick.addEventListener('click', () => {
+    
+    postitZoom.classList.remove('d-none');
+    postitZoom.classList.add('d-flex', 'flex-column');
+
+})
+
+closeZoomButton.addEventListener('click', () => {
+    
+    postitZoom.classList.add('d-none');
+    postitZoom.classList.remove('d-flex', 'flex-column');
+
+})
