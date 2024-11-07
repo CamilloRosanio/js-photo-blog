@@ -16,26 +16,50 @@ rendi la pagina responsive, in modo che su mobile e tablet le foto si dispongano
 */
 
 
+
+
+
+
 /**********************************************************
 | # SVOLGIMENTO
 **********************************************************/
 
 
-const cardClick = document.getElementById('cardClick');
 
+// Dichiarazione variabili di utilità
+const requestedCards = 6;
+
+
+
+// CLOSE GREYOUT BUTTON
 const postitZoom = document.getElementById('postit-zoom');
 const closeZoomButton = document.getElementById('closeZoomButton');
 
-cardClick.addEventListener('click', () => {
-    
-    postitZoom.classList.remove('d-none');
-    postitZoom.classList.add('d-flex', 'flex-column');
-
-})
 
 closeZoomButton.addEventListener('click', () => {
-    
     postitZoom.classList.add('d-none');
     postitZoom.classList.remove('d-flex', 'flex-column');
-
 })
+
+
+
+
+
+// CLICK SUL POSTIT
+// const cardClick = document.getElementById('cardClick');
+
+
+
+// cardClick.addEventListener('click', () => {
+    
+//     postitZoom.classList.remove('d-none');
+//     postitZoom.classList.add('d-flex', 'flex-column');
+
+// })
+
+
+// FETCH FUNCTION
+let fetchContent = async () => {
+
+    fetch(`https://jsonplaceholder.typicode.com/photos?_limit=${requestedCards}`)
+}
