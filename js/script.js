@@ -55,7 +55,7 @@ const fetchPhotos = async () => {
 };
 
 
-// #FX# EXTRACTION FROM FETCH
+// #FX# PRINT OF THE DOM
 const printDOM = async () => {
     const extractedPhotos = await fetchPhotos();
 
@@ -97,6 +97,26 @@ printDOM();
 
 
 
+// TENTATIVO 2
+let printedCards;
+
+// EXTRACT NODES 
+const getNodes = async () => {
+    const updatedDOM = await printDOM();
+
+    printedCards = document.querySelectorAll('#postitList .zoomThisCard');
+
+    // console.log(printedCards);
+
+    return printedCards;
+}
+
+printedCards = getNodes();
+
+console.log(printedCards);
+
+
+
 
 
 
@@ -109,23 +129,32 @@ printDOM();
 // })
 
 
+
+
+// TENTATIVO 1
+
 // const zoomThisCard = document.querySelectorAll('#postitList .zoomThisCard');
 
-// console.log(zoomThisCard);
 
-let printedCards = [];
+// let printedCards = [];
 
-const PostitNodes = async () => {
-    const print = await printDOM();
+// const PostitNodes = async () => {
+//     const print = await printDOM();
 
-    printedCards = document.querySelectorAll('#postitList .zoomThisCard');
+//     printedItems = await document.querySelectorAll('#postitList .zoomThisCard');
 
-    console.log('await node');
-    console.log(printedCards);
+//     console.log('await node');
+//     console.log(printedItems);
 
-    return printedCards;
-}
+//     printedItems.forEach(node => {
+//         printedCards.push(node);
+//     })
 
-console.log('primo node');
-printedCards = PostitNodes();
-console.log(printedCards);
+//     return printedCards;
+// }
+
+// PostitNodes();
+
+// console.log(printedCards);
+
+// console.log(printedCards[0]);
