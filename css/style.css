@@ -46,7 +46,7 @@ header {
     position: relative;
 }
 
-#postit-zoom {
+#hidden-postit-zoom {
     width: 100vw;
     height: 100vh;
     position: absolute;
@@ -65,6 +65,10 @@ main {
 
 .postit-box {
     position: relative;
+}
+
+.zoomThisCard {
+    cursor: pointer;
 }
 
 

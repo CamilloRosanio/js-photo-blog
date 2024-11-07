@@ -32,22 +32,14 @@ const postitList = document.getElementById('postitList');
 
 const hiddenPostitZoom = document.getElementById('hidden-postit-zoom');
 const closeZoomButton = document.getElementById('closeZoomButton');
-
-const zoomThisCard = document.getElementsByClassName('zoomThisCard');
-
-console.log(zoomThisCard);
-
-
-
-
         
 
 
 // #EVENT# CLOSE GREYOUT (BUTTON)
-// closeZoomButton.addEventListener('click', () => {
-//     hiddenPostitZoom.classList.add('d-none');
-//     hiddenPostitZoom.classList.remove('d-flex', 'flex-column');
-// })
+closeZoomButton.addEventListener('click', () => {
+    hiddenPostitZoom.classList.add('d-none');
+    hiddenPostitZoom.classList.remove('d-flex', 'flex-column');
+})
 
 
 
@@ -99,8 +91,13 @@ const printDOM = async () => {
 };
 
 
-// Richiamo la funzione al caricamento della pagina
+// Richiamo la funzione di stampa Postits al caricamento della pagina
 printDOM();
+
+
+
+
+
 
 
 
@@ -112,15 +109,23 @@ printDOM();
 // })
 
 
+// const zoomThisCard = document.querySelectorAll('#postitList .zoomThisCard');
 
-console.log(zoomThisCard);
+// console.log(zoomThisCard);
 
+let printedCards = [];
 
+const PostitNodes = async () => {
+    const print = await printDOM();
 
-for(let i = 0; i < zoomThisCard.length; i++) {
-    (function(i) {
-      zoomThisCard[i].addEventListener('click', () => {
-         alert('ciao');
-       })
-    })(i);
-  }
+    printedCards = document.querySelectorAll('#postitList .zoomThisCard');
+
+    console.log('await node');
+    console.log(printedCards);
+
+    return printedCards;
+}
+
+console.log('primo node');
+printedCards = PostitNodes();
+console.log(printedCards);
