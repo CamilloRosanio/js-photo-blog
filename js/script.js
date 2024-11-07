@@ -78,11 +78,11 @@ const printDOM = async () => {
             <div class="bg-white p-3 h-100 zoomThisCard">
                 <!-- POSTIT IMG -->
                 <div class="mb-2">
-                    <img src="${extractedPhotos[i].url}" alt="" class="img-fluid">
+                    <img src="${extractedPhotos[i].url}" alt="" class="img-fluid" id="${'postImg_' + (counterVar)}">
                 </div>
                 <!-- POSTIT TEXT -->
                 <div>
-                    <p class="mb-0">
+                    <p class="mb-0" id="${'postText_' + (counterVar)}">
                         ${extractedPhotos[i].title}
                     </p>
                 </div>
@@ -97,18 +97,25 @@ const printDOM = async () => {
     
     console.log(printedCards);
 
-    printedCards.forEach(item => {
+    printedCards.forEach((item, index) => {
         item.addEventListener("click", () => {
             hiddenPostitZoom.classList.remove('d-none');
             hiddenPostitZoom.classList.add('d-flex', 'flex-column');
 
-            zoomImg.setAttribute('src', 'ccc');
-            zoomText.innerHTML = 'prova';
+            let referenceIndex = index + 1;
+            console.log(referenceIndex);
 
+            referenceImgId = 'postImg_' + referenceIndex;
+            referenceTextId = 'postText_' + referenceIndex;
+
+            const catchedImg = document.getElementById(referenceImgId);
+            const catchedText = document.getElementById(referenceTextId);
+
+            zoomImg.setAttribute('src', catchedImg.getAttribute('src'));
+            zoomText.innerHTML = catchedText.innerHTML;
 
         });
     });
-
 };
 
 
