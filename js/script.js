@@ -32,6 +32,8 @@ const postitList = document.getElementById('postitList');
 
 const hiddenPostitZoom = document.getElementById('hidden-postit-zoom');
 const closeZoomButton = document.getElementById('closeZoomButton');
+const zoomImg = document.getElementById('zoomCard_img');
+const zoomText = document.getElementById('zoomCard_text');
         
 
 
@@ -54,6 +56,8 @@ const fetchPhotos = async () => {
     return photoArray;
 };
 
+
+let printedCards;
 
 // #FX# PRINT OF THE DOM
 const printDOM = async () => {
@@ -88,6 +92,23 @@ const printDOM = async () => {
     }  
 
     postitList.innerHTML = finalHTML;
+
+    printedCards = document.querySelectorAll('#postitList .zoomThisCard');
+    
+    console.log(printedCards);
+
+    printedCards.forEach(item => {
+        item.addEventListener("click", () => {
+            hiddenPostitZoom.classList.remove('d-none');
+            hiddenPostitZoom.classList.add('d-flex', 'flex-column');
+
+            zoomImg.setAttribute('src', 'ccc');
+            zoomText.innerHTML = 'prova';
+
+
+        });
+    });
+
 };
 
 
@@ -97,23 +118,40 @@ printDOM();
 
 
 
-// TENTATIVO 2
-let printedCards;
 
-// EXTRACT NODES 
-const getNodes = async () => {
-    const updatedDOM = await printDOM();
 
-    printedCards = document.querySelectorAll('#postitList .zoomThisCard');
 
-    // console.log(printedCards);
+// const getNodes = async () => {
+//     const result = await printDOM();
+    
+//     return printedItems;
+// }
 
-    return printedCards;
-}
+// console.log(getNodes());
 
-printedCards = getNodes();
 
-console.log(printedCards);
+
+
+
+// // TENTATIVO 2
+// let printedCards;
+
+// // EXTRACT NODES 
+// const getNodes = async () => {
+//     const updatedDOM = await printDOM();
+
+//     printedCards = await document.querySelectorAll('#postitList .zoomThisCard');
+
+//     // console.log(printedCards);
+
+//     return printedCards;
+// }
+
+// console.log('output');
+// console.log(typeof getNodes());
+// console.log(getNodes());
+
+// console.log(getNodes());
 
 
 

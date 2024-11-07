@@ -48,7 +48,7 @@ header {
 
 #hidden-postit-zoom {
     width: 100vw;
-    height: 100vh;
+    height: 100wh;
     position: absolute;
     z-index: 1;
 
