@@ -27,11 +27,20 @@ rendi la pagina responsive, in modo che su mobile e tablet le foto si dispongano
 
 
 // Dichiarazione variabili di utilità
-const requestedCards = 6;
+const requestedPhotos = 2;
+let ApiOutput = [];
 
 
+// #EVENT# OPEN GREYOUT
+const cardClick = document.getElementById('cardClick');
 
-// CLOSE GREYOUT BUTTON
+cardClick.addEventListener('click', () => {
+    postitZoom.classList.remove('d-none');
+    postitZoom.classList.add('d-flex', 'flex-column');
+})
+
+
+// #EVENT# CLOSE GREYOUT (BUTTON)
 const postitZoom = document.getElementById('postit-zoom');
 const closeZoomButton = document.getElementById('closeZoomButton');
 
@@ -45,21 +54,21 @@ closeZoomButton.addEventListener('click', () => {
 
 
 
-// CLICK SUL POSTIT
-// const cardClick = document.getElementById('cardClick');
+// #FX# FETCH FUNCTION (ASYNC AWAIT)
+const fetchPhotos = async () => {
+    // # ASYNC AWAIT FETCH
+    const response = await fetch(`https://jsonplaceholder.typicode.com/photos?` + new URLSearchParams({_limit: requestedPhotos, _start: 10,}));
+    const photoArray = await response.json();
+    console.log(photoArray);
+    return photoArray;
+};
 
 
-
-// cardClick.addEventListener('click', () => {
-    
-//     postitZoom.classList.remove('d-none');
-//     postitZoom.classList.add('d-flex', 'flex-column');
-
-// })
+// #FX# EXTRACTION FROM FETCH
+const initData = async () => {
+    const extractedPhotos = await fetchPhotos();
+    console.log(extractedPhotos);
+};
 
 
-// FETCH FUNCTION
-let fetchContent = async () => {
-
-    fetch(`https://jsonplaceholder.typicode.com/photos?_limit=${requestedCards}`)
-}
+initData();
