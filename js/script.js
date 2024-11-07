@@ -25,30 +25,29 @@ rendi la pagina responsive, in modo che su mobile e tablet le foto si dispongano
 **********************************************************/
 
 // Dichiarazione variabili di utilità
-const requestedPhotos = 5;
+const requestedPhotos = 6;
 const idRoot = 'myPostit_';
 
 const postitList = document.getElementById('postitList');
 
-const postitZoom = document.getElementById('postit-zoom');
+const hiddenPostitZoom = document.getElementById('hidden-postit-zoom');
 const closeZoomButton = document.getElementById('closeZoomButton');
 
+const zoomThisCard = document.getElementsByClassName('zoomThisCard');
+
+console.log(zoomThisCard);
 
 
-// #EVENT# OPEN GREYOUT
-// const cardClick = document.getElementById('cardClick');
 
-// cardClick.addEventListener('click', () => {
-//     postitZoom.classList.remove('d-none');
-//     postitZoom.classList.add('d-flex', 'flex-column');
-// })
+
+        
 
 
 // #EVENT# CLOSE GREYOUT (BUTTON)
-closeZoomButton.addEventListener('click', () => {
-    postitZoom.classList.add('d-none');
-    postitZoom.classList.remove('d-flex', 'flex-column');
-})
+// closeZoomButton.addEventListener('click', () => {
+//     hiddenPostitZoom.classList.add('d-none');
+//     hiddenPostitZoom.classList.remove('d-flex', 'flex-column');
+// })
 
 
 
@@ -68,14 +67,6 @@ const fetchPhotos = async () => {
 const printDOM = async () => {
     const extractedPhotos = await fetchPhotos();
 
-    let arrayTitle = [];
-    let arrayUrl = [];
-
-    for(let i=0; i < requestedPhotos; i++) {
-        arrayTitle.push(extractedPhotos[i].title);
-        arrayUrl.push(extractedPhotos[i].url);
-    }
-
     let finalHTML = '';
     let counterVar = 0;
 
@@ -88,15 +79,15 @@ const printDOM = async () => {
             <div class="pinpoint">
                 <img src="./img/pin.svg" alt="" class="img-fluid">
             </div>
-            <div class="bg-white p-3 h-100" id="cardClick">
+            <div class="bg-white p-3 h-100 zoomThisCard">
                 <!-- POSTIT IMG -->
                 <div class="mb-2">
-                    <img src="${arrayUrl[i]}" alt="" class="img-fluid">
+                    <img src="${extractedPhotos[i].url}" alt="" class="img-fluid">
                 </div>
                 <!-- POSTIT TEXT -->
                 <div>
                     <p class="mb-0">
-                        ${arrayTitle[i]}
+                        ${extractedPhotos[i].title}
                     </p>
                 </div>
             </div>
@@ -110,3 +101,26 @@ const printDOM = async () => {
 
 // Richiamo la funzione al caricamento della pagina
 printDOM();
+
+
+
+
+// #EVENT# OPEN GREYOUT
+// zoomThisCard.addEventListener('click', () => {
+//     hiddenPostitZoom.classList.remove('d-none');
+//     hiddenPostitZoom.classList.add('d-flex', 'flex-column');
+// })
+
+
+
+console.log(zoomThisCard);
+
+
+
+for(let i = 0; i < zoomThisCard.length; i++) {
+    (function(i) {
+      zoomThisCard[i].addEventListener('click', () => {
+         alert('ciao');
+       })
+    })(i);
+  }
