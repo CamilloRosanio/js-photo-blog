@@ -24,13 +24,15 @@ rendi la pagina responsive, in modo che su mobile e tablet le foto si dispongano
 | # SVOLGIMENTO
 **********************************************************/
 
-
-
 // Dichiarazione variabili di utilità
-const requestedPhotos = 2;
+const requestedPhotos = 5;
 const idRoot = 'myPostit_';
 
 const postitList = document.getElementById('postitList');
+
+const postitZoom = document.getElementById('postit-zoom');
+const closeZoomButton = document.getElementById('closeZoomButton');
+
 
 
 // #EVENT# OPEN GREYOUT
@@ -43,16 +45,10 @@ const postitList = document.getElementById('postitList');
 
 
 // #EVENT# CLOSE GREYOUT (BUTTON)
-const postitZoom = document.getElementById('postit-zoom');
-const closeZoomButton = document.getElementById('closeZoomButton');
-
-
 closeZoomButton.addEventListener('click', () => {
     postitZoom.classList.add('d-none');
     postitZoom.classList.remove('d-flex', 'flex-column');
 })
-
-
 
 
 
@@ -71,25 +67,46 @@ const fetchPhotos = async () => {
 // #FX# EXTRACTION FROM FETCH
 const printDOM = async () => {
     const extractedPhotos = await fetchPhotos();
-    console.log(typeof extractedPhotos);
-    console.log(extractedPhotos);
-    console.table(extractedPhotos[0].title);
 
-    postitList.innerHTML = '';
+    let arrayTitle = [];
+    let arrayUrl = [];
+
+    for(let i=0; i < requestedPhotos; i++) {
+        arrayTitle.push(extractedPhotos[i].title);
+        arrayUrl.push(extractedPhotos[i].url);
+    }
+
+    let finalHTML = '';
     let counterVar = 0;
 
     for (let i=0; i < requestedPhotos; i++) {
+
         counterVar += 1;
 
-        if (counterVar !== requestedPhotos) {
+        finalHTML += `
+        <div class="col-12 col-md-6 col-lg-4 postit-box" id="${idRoot + (counterVar)}">
+            <div class="pinpoint">
+                <img src="./img/pin.svg" alt="" class="img-fluid">
+            </div>
+            <div class="bg-white p-3 h-100" id="cardClick">
+                <!-- POSTIT IMG -->
+                <div class="mb-2">
+                    <img src="${arrayUrl[i]}" alt="" class="img-fluid">
+                </div>
+                <!-- POSTIT TEXT -->
+                <div>
+                    <p class="mb-0">
+                        ${arrayTitle[i]}
+                    </p>
+                </div>
+            </div>
+        </div>
+        `;
+    }  
 
-        }
-    }
-        
+    postitList.innerHTML = finalHTML;
 };
 
 
+// Richiamo la funzione al caricamento della pagina
 printDOM();
-
-
-// fetchPhotos();
