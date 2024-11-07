@@ -61,7 +61,7 @@ main {
     width: 70%;
 }
 
-#card-box {
+.postit-box {
     position: relative;
 }
 

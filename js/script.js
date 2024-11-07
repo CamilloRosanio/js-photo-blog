@@ -28,16 +28,18 @@ rendi la pagina responsive, in modo che su mobile e tablet le foto si dispongano
 
 // Dichiarazione variabili di utilità
 const requestedPhotos = 2;
-let ApiOutput = [];
+const idRoot = 'myPostit_';
+
+const postitList = document.getElementById('postitList');
 
 
 // #EVENT# OPEN GREYOUT
-const cardClick = document.getElementById('cardClick');
+// const cardClick = document.getElementById('cardClick');
 
-cardClick.addEventListener('click', () => {
-    postitZoom.classList.remove('d-none');
-    postitZoom.classList.add('d-flex', 'flex-column');
-})
+// cardClick.addEventListener('click', () => {
+//     postitZoom.classList.remove('d-none');
+//     postitZoom.classList.add('d-flex', 'flex-column');
+// })
 
 
 // #EVENT# CLOSE GREYOUT (BUTTON)
@@ -59,16 +61,35 @@ const fetchPhotos = async () => {
     // # ASYNC AWAIT FETCH
     const response = await fetch(`https://jsonplaceholder.typicode.com/photos?` + new URLSearchParams({_limit: requestedPhotos, _start: 10,}));
     const photoArray = await response.json();
-    console.log(photoArray);
+    // console.log(typeof photoArray);
+    // console.log(photoArray);
+    // console.table(photoArray[0].title);
     return photoArray;
 };
 
 
 // #FX# EXTRACTION FROM FETCH
-const initData = async () => {
+const printDOM = async () => {
     const extractedPhotos = await fetchPhotos();
+    console.log(typeof extractedPhotos);
     console.log(extractedPhotos);
+    console.table(extractedPhotos[0].title);
+
+    postitList.innerHTML = '';
+    let counterVar = 0;
+
+    for (let i=0; i < requestedPhotos; i++) {
+        counterVar += 1;
+
+        if (counterVar !== requestedPhotos) {
+
+        }
+    }
+        
 };
 
 
-initData();
+printDOM();
+
+
+// fetchPhotos();
