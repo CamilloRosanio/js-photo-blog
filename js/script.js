@@ -73,6 +73,7 @@ const printDOM = async () => {
 
     for (let i=0; i < requestedPhotos; i++) {
 
+        // ridondante: potevo usare la i
         counterVar += 1;
 
         finalHTML += `
@@ -98,10 +99,65 @@ const printDOM = async () => {
 
     postitList.innerHTML = finalHTML;
 
-    printedCards = document.querySelectorAll('#postitList .zoomThisCard');
-    
-    console.log(printedCards);
 
+    /**********************************************************
+    | # SOLUZIONE {1} INTERNA ALLA FUNZIONE PRINT DOM
+    **********************************************************/
+
+    // printedCards = document.querySelectorAll('#postitList .zoomThisCard');
+    
+    // console.log(printedCards);
+
+
+    // // CARDS EVENT LISTENER
+    
+    // printedCards.forEach((item, index) => {
+    //     item.addEventListener("click", () => {
+    //         hiddenPostitZoom.classList.remove('d-none');
+    //         hiddenPostitZoom.classList.add('d-flex', 'flex-column');
+
+    //         let referenceIndex = index + 1;
+    //         console.log(referenceIndex);
+
+    //         referenceImgId = 'postImg_' + referenceIndex;
+    //         referenceTextId = 'postText_' + referenceIndex;
+
+    //         const catchedImg = document.getElementById(referenceImgId);
+    //         const catchedText = document.getElementById(referenceTextId);
+
+    //         zoomImg.setAttribute('src', catchedImg.getAttribute('src'));
+    //         zoomText.innerHTML = catchedText.innerHTML;
+
+    //     });
+    // });
+};
+
+
+/**********************************************************
+| # SOLUZIONE {1} INTERNA ALLA FUNZIONE PRINT DOM CON RICHIAMO DELL'ULTIMA FUNZIONE DELLA CATENA
+**********************************************************/
+// Richiamo la funzione di stampa Postits al caricamento della pagina
+// printDOM();
+
+
+
+
+
+
+/**********************************************************
+| # SOLUZIONE {2} TERZA FUNZIONE ESTERNA CHE A CATENA COINVOLGE fetch => printDOM => inizializzazione
+**********************************************************/
+
+// funzione init che inizializza tutto a catena rispettando gli AWAITS
+
+
+const init = async () => {
+
+    // Specifico la funzione ASYNC di cui devo attendere lo svolgimento e i risultati
+    await printDOM();
+
+    // Dichiarazione NODES delle cards
+    printedCards = document.querySelectorAll('#postitList .zoomThisCard');
 
     // CARDS EVENT LISTENER
     
@@ -124,90 +180,14 @@ const printDOM = async () => {
 
         });
     });
-};
-
-
-// Richiamo la funzione di stampa Postits al caricamento della pagina
-printDOM();
+}
 
 
 
 
+/**********************************************************
+| # SOLUZIONE {2} TERZA FUNZIONE ESTERNA CHE A CATENA COINVOLGE fetch => printDOM => inizializzazione
+**********************************************************/
 
-
-
-// const getNodes = async () => {
-//     const result = await printDOM();
-    
-//     return printedItems;
-// }
-
-// console.log(getNodes());
-
-
-
-
-
-// // TENTATIVO 2
-// let printedCards;
-
-// // EXTRACT NODES 
-// const getNodes = async () => {
-//     const updatedDOM = await printDOM();
-
-//     printedCards = await document.querySelectorAll('#postitList .zoomThisCard');
-
-//     // console.log(printedCards);
-
-//     return printedCards;
-// }
-
-// console.log('output');
-// console.log(typeof getNodes());
-// console.log(getNodes());
-
-// console.log(getNodes());
-
-
-
-
-
-
-
-
-// #EVENT# OPEN GREYOUT
-// zoomThisCard.addEventListener('click', () => {
-//     hiddenPostitZoom.classList.remove('d-none');
-//     hiddenPostitZoom.classList.add('d-flex', 'flex-column');
-// })
-
-
-
-
-// TENTATIVO 1
-
-// const zoomThisCard = document.querySelectorAll('#postitList .zoomThisCard');
-
-
-// let printedCards = [];
-
-// const PostitNodes = async () => {
-//     const print = await printDOM();
-
-//     printedItems = await document.querySelectorAll('#postitList .zoomThisCard');
-
-//     console.log('await node');
-//     console.log(printedItems);
-
-//     printedItems.forEach(node => {
-//         printedCards.push(node);
-//     })
-
-//     return printedCards;
-// }
-
-// PostitNodes();
-
-// console.log(printedCards);
-
-// console.log(printedCards[0]);
+// Richiamo la funzione che a catena richiama tutte le ASYNC FUNCTIONS
+init();
