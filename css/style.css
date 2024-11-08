@@ -83,7 +83,7 @@ main {
 .postit-box:hover {
     transition: all 500ms;
     transform: rotate(21deg);
-    transform-origin: 50% 0;
+    transform-origin: 50% 4%;
     z-index: 1;
 }
 
