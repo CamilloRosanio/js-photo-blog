@@ -81,7 +81,7 @@ const printDOM = async () => {
             <div class="pinpoint">
                 <img src="./img/pin.svg" alt="" class="img-fluid">
             </div>
-            <div class="bg-white p-3 h-100 zoomThisCard">
+            <div class="bg-white p-3 h-100 rounded zoomThisCard">
                 <!-- POSTIT IMG -->
                 <div class="mb-2">
                     <img src="${extractedPhotos[i].url}" alt="" class="img-fluid" id="${'postImg_' + (counterVar)}">
