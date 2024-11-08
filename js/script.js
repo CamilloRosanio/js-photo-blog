@@ -44,7 +44,10 @@ closeZoomButton.addEventListener('click', () => {
     hiddenPostitZoom.classList.add('d-none');
     hiddenPostitZoom.classList.remove('d-flex', 'flex-column');
 })
-
+hiddenPostitZoom.addEventListener('click', () => {
+    hiddenPostitZoom.classList.add('d-none');
+    hiddenPostitZoom.classList.remove('d-flex', 'flex-column');
+})
 
 
 // #FX# FETCH FUNCTION (ASYNC AWAIT)
