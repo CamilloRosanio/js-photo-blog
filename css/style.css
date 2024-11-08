@@ -85,9 +85,14 @@ main {
     cursor: pointer;
 }
 
+.zoomThisCard:hover {
+    box-shadow: 7px 7px 25px 0;
+    cursor: pointer;
+}
+
 .postit-box:hover {
     transition: all 500ms;
-    transform: rotate(21deg);
+    transform: rotate(21deg) scale(1.1);
     transform-origin: 50% 4%;
     z-index: 1;
 }
